@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.builditbigger.backend.myApi.MyApi;
 import com.builditbigger.backend.myApi.model.MyBean;
@@ -20,16 +21,16 @@ import java.util.List;
  * Created by Gurpreet on 8/18/2016.
  */
 
-class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<Jokes>> {
+class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
 
     private static final String KEY_JOKES = "JOKES";
+    private static final String TAG = EndpointsAsyncTask.class.getSimpleName();
     private static MyApi myApiService = null;
     private Activity activity;
-    private ArrayList<Jokes> jokesList = new ArrayList<>();
 
 
     @Override
-    protected List<Jokes> doInBackground(Activity... params) {
+    protected List<MyBean> doInBackground(Activity... params) {
 
         try {
             if (myApiService == null) {  // Only do this once
@@ -47,11 +48,10 @@ class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<Jokes>> {
 
             activity = params[0];
             //return myApiService.sayHi(name).execute().getData();
-            List<MyBean> beanList = myApiService.getJoke().execute().getItems();
-            for (MyBean bean : beanList) {
-                jokesList.add(new Jokes(bean.getData()));
-            }
-            return jokesList;
+            ///return myApiService.getJoke().execute().getData();
+
+            return myApiService.getAllJokes().execute().getItems();
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,12 +62,11 @@ class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<Jokes>> {
 
 
     @Override
-    protected void onPostExecute(List<Jokes> result) {
-
-        //Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+    protected void onPostExecute(List<MyBean> result) {
 
         Intent myIntent = new Intent(activity, JokeActivity.class);
-        myIntent.putExtra(KEY_JOKES, (ArrayList)result);
+        ///jokesList.add(result);
+        myIntent.putExtra(KEY_JOKES, (ArrayList) result);
         activity.startActivity(myIntent);
     }
 

@@ -28,7 +28,6 @@ import javax.inject.Named;
 )
 public class MyEndpoint {
 
-    List<MyBean> beanList = new ArrayList<>();
 
     /** A simple endpoint method that takes a name and says Hi back */
     /*
@@ -40,15 +39,23 @@ public class MyEndpoint {
         return response;
     }
 */
-    @ApiMethod(name = "getJoke")
-    public List<MyBean> getJoke() {
-        //MyBean response = new MyBean();
-        //response.setData(new Jokes().tellJoke());
+    @ApiMethod(name = "getAllJokes")
+    public List<MyBean> getAllJokes() {
+
+        List<MyBean> beanList = new ArrayList<>();
         List<String> listAllJokes = Jokes.getJokes();
         for (String joke : listAllJokes) {
             beanList.add(new MyBean(joke));
         }
         return beanList;
+
+    }
+
+    @ApiMethod(name = "getJoke")
+    public MyBean getJoke() {
+        MyBean response = new MyBean("yo");
+        response.setData(Jokes.tellJoke());
+        return response;
     }
 
 }

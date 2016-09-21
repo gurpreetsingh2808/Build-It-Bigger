@@ -8,7 +8,7 @@ public class Jokes {
 
     //private String jokes;
     private static List<String> jokes = new ArrayList<>();
-    Random random = new Random();
+    private static Random random = new Random();
 
     public Jokes(String data) {
         jokes.add(data);
@@ -20,7 +20,7 @@ public class Jokes {
         */
     }
 
-    public String tellJoke(){
+    public static String tellJoke(){
 
         int index = random.nextInt(jokes.size());
         return jokes.get(index);
