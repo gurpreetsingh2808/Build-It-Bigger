@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class SwipeStackAdapter extends BaseAdapter {
 
-    private List<String> mData = new ArrayList<>();
+    private List<ParcelableString> mData = new ArrayList<>();
 
-    public SwipeStackAdapter(List<String> data) {
+    public SwipeStackAdapter(List<ParcelableString> data) {
         this.mData = data;
     }
 
@@ -32,7 +32,7 @@ public class SwipeStackAdapter extends BaseAdapter {
 
     @Override
     public String getItem(int position) {
-        return mData.get(position);
+        return mData.get(position).getString();
     }
 
     @Override
@@ -45,7 +45,7 @@ public class SwipeStackAdapter extends BaseAdapter {
 
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card, parent, false);
         TextView textViewCard = (TextView) convertView.findViewById(R.id.textViewCard);
-        textViewCard.setText(mData.get(position));
+        textViewCard.setText(mData.get(position).getString());
 
         return convertView;
     }

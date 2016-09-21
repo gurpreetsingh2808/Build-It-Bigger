@@ -1,17 +1,16 @@
 package com.udacity.gradle.builditbigger;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.builditbigger.backend.myApi.MyApi;
 import com.builditbigger.backend.myApi.model.MyBean;
-import com.example.Jokes;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.jokelibraryandroid.JokeActivity;
+import com.jokelibraryandroid.ParcelableString;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ import java.util.List;
 
 class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
 
-    private static final String KEY_JOKES = "JOKES";
     private static final String TAG = EndpointsAsyncTask.class.getSimpleName();
     private static MyApi myApiService = null;
     private Activity activity;
@@ -39,8 +37,8 @@ class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
                         // options for running against local devappserver
                         // - 10.0.2.2 is localhost's IP address in Android emulator
                         // - turn off compression when running against local devappserver
-                        //.setRootUrl("http://10.0.3.2:8080/_ah/api/") //address of the Genymotion emulator
-                        .setRootUrl("https://build-it-bigger-123123.appspot.com/_ah/api/");
+                        .setRootUrl("http://10.0.3.2:8080/_ah/api/"); //address of the Genymotion emulator
+//                        .setRootUrl("https://build-it-bigger-123123.appspot.com/_ah/api/");
 
                 // end options for devappserver
                 myApiService = builder.build();
@@ -66,8 +64,15 @@ class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
 
         Intent myIntent = new Intent(activity, JokeActivity.class);
         ///jokesList.add(result);
-        myIntent.putExtra(KEY_JOKES, (ArrayList) result);
-        activity.startActivity(myIntent);
+        Log.d(TAG, "onPostExecute: Results: "+result);
+        if (result!=null&&!result.isEmpty()){
+            ArrayList<ParcelableString> strings = new ArrayList<>(result.size());
+            for (MyBean bean : result) {
+                strings.add(new ParcelableString(bean.getData()));
+            }
+            myIntent.putParcelableArrayListExtra(JokeActivity.KEY_JOKES,strings);
+            activity.startActivity(myIntent);
+        }
     }
 
 }

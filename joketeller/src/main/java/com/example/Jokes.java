@@ -10,14 +10,15 @@ public class Jokes {
     private static List<String> jokes = new ArrayList<>();
     private static Random random = new Random();
 
-    public Jokes(String data) {
-        jokes.add(data);
-        /*
+    static {
         jokes.add("What do you call it when Batman skips Church?  \n ... \n Christian Bale.");
         jokes.add("Texan: \"Where are you from?\" \n" +
                 "Harvard Grad: \"I come from a place where we do not end our sentences with prepositions.\" \n" +
                 "Texan: \"OK - where are you from, jackass?\" ");
-        */
+        jokes.add("Another test Joke! :D");
+    }
+    public Jokes(String data) {
+        jokes.add(data);
     }
 
     public static String tellJoke(){
