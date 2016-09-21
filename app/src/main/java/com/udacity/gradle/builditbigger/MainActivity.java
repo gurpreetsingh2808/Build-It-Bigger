@@ -1,9 +1,11 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,12 +17,12 @@ import com.jokelibraryandroid.JokeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String KEY_JOKES = "JOKES";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
 
@@ -48,10 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void tellJoke(View view) {
-        Intent myIntent = new Intent(this, JokeActivity.class);
-        Jokes jokes = new Jokes();
-        myIntent.putExtra(KEY_JOKES,jokes.tellJoke());
-        //myIntent.putParcelableArrayListExtra(KEY_JOKES,jokes);
-        startActivity(myIntent);
+        new EndpointsAsyncTask().execute(MainActivity.this);
     }
 }
