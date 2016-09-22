@@ -37,8 +37,8 @@ class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
                         // options for running against local devappserver
                         // - 10.0.2.2 is localhost's IP address in Android emulator
                         // - turn off compression when running against local devappserver
-                        .setRootUrl("http://10.0.3.2:8080/_ah/api/"); //address of the Genymotion emulator
-//                        .setRootUrl("https://build-it-bigger-123123.appspot.com/_ah/api/");
+                        //.setRootUrl("http://10.0.3.2:8080/_ah/api/"); //address of the Genymotion emulator
+                        .setRootUrl("https://build-it-bigger-123123.appspot.com/_ah/api/");
 
                 // end options for devappserver
                 myApiService = builder.build();
@@ -63,7 +63,6 @@ class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
     protected void onPostExecute(List<MyBean> result) {
 
         Intent myIntent = new Intent(activity, JokeActivity.class);
-        ///jokesList.add(result);
         Log.d(TAG, "onPostExecute: Results: "+result);
         if (result!=null&&!result.isEmpty()){
             ArrayList<ParcelableString> strings = new ArrayList<>(result.size());

@@ -11,12 +11,13 @@ public class Jokes {
     private static Random random = new Random();
 
     static {
-        jokes.add("What do you call it when Batman skips Church?  \n ... \n Christian Bale.");
-        jokes.add("Texan: \"Where are you from?\" \n" +
-                "Harvard Grad: \"I come from a place where we do not end our sentences with prepositions.\" \n" +
+        jokes.add("What do you call it when Batman skips Church?  \n ... \n\n Christian Bale.");
+        jokes.add("Texan: \"Where are you from?\" \n\n" +
+                "Harvard Grad: \"I come from a place where we do not end our sentences with prepositions.\" \n\n" +
                 "Texan: \"OK - where are you from, jackass?\" ");
         jokes.add("Another test Joke! :D");
     }
+
     public Jokes(String data) {
         jokes.add(data);
     }
