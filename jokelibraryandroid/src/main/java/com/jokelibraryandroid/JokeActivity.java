@@ -1,6 +1,7 @@
 package com.jokelibraryandroid;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -11,9 +12,9 @@ import link.fls.swipestack.SwipeStack;
 
 public class JokeActivity extends AppCompatActivity implements SwipeStack.SwipeStackListener {
 
-    private static final String KEY_JOKES = "JOKES";
+    public static final String KEY_JOKES = "JOKES";
     private static final String TAG = JokeActivity.class.getSimpleName();
-    private ArrayList<String> mData = new ArrayList<>();
+    private ArrayList<ParcelableString> mData = new ArrayList<>();
     private SwipeStackAdapter mAdapter;
 
     @Override
@@ -27,7 +28,7 @@ public class JokeActivity extends AppCompatActivity implements SwipeStack.SwipeS
         //mData = new ArrayList<>();
 
         if (getIntent().hasExtra(KEY_JOKES)) {
-            mData = (getIntent().getExtras().getStringArrayList(KEY_JOKES));
+            mData = (getIntent().getExtras().getParcelableArrayList(KEY_JOKES));
             if (mSwipeStack != null && mData != null) {
                 mAdapter = new SwipeStackAdapter(mData);
                 mSwipeStack.setAdapter(mAdapter);
