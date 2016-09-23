@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builtitbigger;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.Jokes;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.udacity.gradle.builditbigger.R;
 
 
 /**
