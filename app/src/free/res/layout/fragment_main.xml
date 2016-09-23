@@ -26,7 +26,6 @@
         android:layout_width="150dp"
         android:layout_height="250dp"
         android:layout_centerInParent="true"
-        android:onClick="tellJoke"
         android:rotation="5"
         >
 
@@ -35,7 +34,10 @@
             android:layout_height="250dp"
             android:layout_margin="8dp"
             android:layout_gravity="center"
-            ads:srcCompat="@drawable/joker"/>
+            ads:srcCompat="@drawable/joker"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            tools:targetApi="lollipop"
+            />
     </RelativeLayout>
 
     <TextView
