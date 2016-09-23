@@ -18,6 +18,8 @@ import com.udacity.gradle.builditbigger.R;
  */
 public class MainActivityFragment extends Fragment {
 
+    private RelativeLayout rlCard;
+
     public MainActivityFragment() {
     }
 
@@ -25,6 +27,17 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
+
+        rlCard = (RelativeLayout) root.findViewById(R.id.rlCard);
+        rlCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ///////rlCard.setEnabled(false);
+                //  fetch jokes
+                new EndpointsAsyncTask().execute(MainActivity.this);
+            }
+        });
 
         return root;
     }

@@ -1,18 +1,12 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.Jokes;
-import com.jokelibraryandroid.JokeActivity;
+import com.udacity.gradle.builtitbigger.MainActivityFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -48,8 +42,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    public void tellJoke(View view) {
-        new EndpointsAsyncTask().execute(MainActivity.this);
-    }
 }

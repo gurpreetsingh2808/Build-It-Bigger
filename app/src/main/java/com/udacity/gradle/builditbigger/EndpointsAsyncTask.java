@@ -20,7 +20,7 @@ import java.util.List;
  * Created by Gurpreet on 8/18/2016.
  */
 
-class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
+public class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
 
     private static final String TAG = EndpointsAsyncTask.class.getSimpleName();
     private static MyApi myApiService = null;
