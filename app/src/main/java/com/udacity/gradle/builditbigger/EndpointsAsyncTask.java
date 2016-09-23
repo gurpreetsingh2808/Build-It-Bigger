@@ -52,6 +52,7 @@ class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> {
 
 
         } catch (IOException e) {
+            //  snackbar here
             e.printStackTrace();
             return null;
             //return e.getMessage();
