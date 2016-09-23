@@ -11,6 +11,7 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.jokelibraryandroid.JokeActivity;
 import com.jokelibraryandroid.ParcelableString;
+import com.udacity.gradle.builtitbigger.MainActivityFragment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,6 +64,9 @@ public class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> 
     @Override
     protected void onPostExecute(List<MyBean> result) {
 
+        if(MainActivityFragment.progressDialog.isShowing()) {
+            MainActivityFragment.progressDialog.dismiss();
+        }
         Intent myIntent = new Intent(activity, JokeActivity.class);
         Log.d(TAG, "onPostExecute: Results: "+result);
         if (result!=null&&!result.isEmpty()){

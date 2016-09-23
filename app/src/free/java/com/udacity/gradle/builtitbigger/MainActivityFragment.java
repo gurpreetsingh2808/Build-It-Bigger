@@ -1,5 +1,6 @@
 package com.udacity.gradle.builtitbigger;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,7 +25,7 @@ import com.google.android.gms.ads.InterstitialAd;
 public class MainActivityFragment extends Fragment implements View.OnClickListener{
 
     private InterstitialAd mInterstitialAd;
-    private RelativeLayout rlCard;
+    public static ProgressDialog progressDialog;
 
     public MainActivityFragment() {
     }
@@ -35,9 +36,11 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-        rlCard = (RelativeLayout) root.findViewById(R.id.rlCard);
+        //  joker card
+        RelativeLayout rlCard = (RelativeLayout) root.findViewById(R.id.rlCard);
         rlCard.setOnClickListener(this);
 
+        //  interstitial ad
         mInterstitialAd = new InterstitialAd(getContext());
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         requestNewInterstitial();
@@ -51,6 +54,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         });
 
 
+        //  mini ad at the bottom of the screen
         AdView mAdView = (AdView) root.findViewById(R.id.adView);
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
@@ -61,6 +65,12 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                 .build();
         mAdView.loadAd(adRequest);
 
+        //  loader
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Fetching jokes for you...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+
         return root;
     }
 
@@ -69,7 +79,6 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
         switch (v.getId()) {
             case R.id.rlCard :
-                ///////rlCard.setEnabled(false);
                 //  check whether app is loaded or not
                 if(mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
@@ -81,6 +90,8 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
     }
 
     private void fetchJokes() {
+
+        progressDialog.show();
         new EndpointsAsyncTask().execute(getActivity());
     }
 
