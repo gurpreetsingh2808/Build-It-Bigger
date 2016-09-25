@@ -35,8 +35,7 @@
             android:layout_margin="8dp"
             android:layout_gravity="center"
             ads:srcCompat="@drawable/joker"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            tools:targetApi="lollipop"
+
             />
     </RelativeLayout>
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.udacity.gradle.builditbigger.SplashActivity">
+
+    <ImageView
+        android:id="@+id/ivSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:paddingRight="32dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/splash"/>
+
+
+    <LinearLayout
+        android:id="@+id/llTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/ivSplash"
+        >
+
+        <TextView
+            android:id="@+id/tvLetsBuildIt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lets_build_it"
+            android:textColor="#000"
+            android:visibility="gone"
+            android:textSize="20sp"/>
+
+
+    <TextView
+        android:id="@+id/tvBigger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/tvIt"
+        android:text="@string/bigger"
+        android:textColor="#000"
+        android:layout_marginLeft="16dp"
+        android:visibility="invisible"
+        android:textSize="28sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

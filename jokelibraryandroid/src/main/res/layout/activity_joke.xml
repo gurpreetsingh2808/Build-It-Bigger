@@ -20,7 +20,9 @@
                 android:id="@+id/swipeStack"
                 android:layout_width="240dp"
                 android:layout_height="340dp"
-                android:layout_margin="32dp" />
+                android:layout_margin="32dp"
+                app:background="@android:color/transparent"
+                />
 
         </FrameLayout>
 
