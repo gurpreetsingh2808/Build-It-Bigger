@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.builditbigger.backend.myApi.MyApi;
 import com.builditbigger.backend.myApi.model.MyBean;
@@ -54,6 +55,8 @@ public class EndpointsAsyncTask extends AsyncTask<Activity, Void, List<MyBean>> 
 
         } catch (IOException e) {
             //  snackbar here
+            Toast.makeText(activity.getBaseContext(), "There was a problem in retrieving jokes. " +
+                    "Please try again later", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
             return null;
             //return e.getMessage();

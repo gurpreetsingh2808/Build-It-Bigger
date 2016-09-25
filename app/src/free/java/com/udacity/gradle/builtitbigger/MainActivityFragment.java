@@ -84,6 +84,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
                     mInterstitialAd.show();
                 }
                 else {
+
                     fetchJokes();
                 }
         }

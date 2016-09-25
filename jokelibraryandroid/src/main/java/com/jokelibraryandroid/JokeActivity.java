@@ -48,6 +48,7 @@ public class JokeActivity extends AppCompatActivity implements SwipeStack.SwipeS
     public void onViewSwipedToRight(int position) {
 
         String swipedElement = mAdapter.getItem(position);
+        Log.d(TAG, "onViewSwipedToRight: position "+position);
         Toast.makeText(this, "view_swiped_right",
                 Toast.LENGTH_SHORT).show();
     }
@@ -56,13 +57,14 @@ public class JokeActivity extends AppCompatActivity implements SwipeStack.SwipeS
     public void onViewSwipedToLeft(int position) {
 
         String swipedElement = mAdapter.getItem(position);
+        Log.d(TAG, "onViewSwipedToRight: position "+position);
         Toast.makeText(this, "view_swiped_left",
                 Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onStackEmpty() {
-        Toast.makeText(this, "stack_empty", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "All caught up", Toast.LENGTH_SHORT).show();
     }
 
 
