@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.Jokes;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.udacity.gradle.builditbigger.ConnectivityUtil;
 import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
 import com.udacity.gradle.builditbigger.R;
 
@@ -36,18 +38,25 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(progressDialog != null) {
-                    progressDialog.show();
+                if(new ConnectivityUtil().isConnected(getContext())) {
+                    if(progressDialog != null) {
+                        progressDialog.show();
+                    }
+                    //  fetch jokes
+                    new EndpointsAsyncTask().execute(getActivity());
                 }
-                //  fetch jokes
-                new EndpointsAsyncTask().execute(getActivity());
+                else {
+                    Toast.makeText(getContext(), "Please checkyour internet connection " +
+                            "and try again", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
         //  loader
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Fetching jokes for you...");
+        progressDialog.setMessage("Fun is about to begin...");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         return root;

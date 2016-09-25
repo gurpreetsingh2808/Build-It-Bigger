@@ -1,19 +1,18 @@
 package com.udacity.gradle.builtitbigger;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-
-import com.example.Jokes;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.udacity.gradle.builditbigger.ConnectivityUtil;
 import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
 import com.udacity.gradle.builditbigger.R;
 import com.google.android.gms.ads.InterstitialAd;
@@ -68,7 +67,7 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         //  loader
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setCancelable(false);
-        progressDialog.setMessage("Fetching jokes for you...");
+        progressDialog.setMessage("Fun is about to begin...");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
         return root;
@@ -79,14 +78,22 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
 
         switch (v.getId()) {
             case R.id.rlCard :
-                //  check whether app is loaded or not
-                if(mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
+
+                //  check network connection
+                if(new ConnectivityUtil().isConnected(getContext())) {
+                    //  check whether app is loaded or not
+                    if(mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    }
+                    else {
+                        fetchJokes();
+                    }
                 }
                 else {
-
-                    fetchJokes();
+                    Toast.makeText(getContext(), "Please check your internet connection " +
+                            "and try again", Toast.LENGTH_SHORT).show();
                 }
+
         }
     }
 
