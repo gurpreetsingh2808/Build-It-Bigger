@@ -26,7 +26,7 @@ You will learn the role of Gradle in building Android Apps and how to use Gradle
 * Configure an integration test suite that runs against the local App Engine development server
 
 ## Screenshots
-https://cloud.githubusercontent.com/assets/9627223/24589937/e0e6763e-1800-11e7-970d-84add1d1325a.png
+![0](https://cloud.githubusercontent.com/assets/9627223/24589937/e0e6763e-1800-11e7-970d-84add1d1325a.png)
 
 ##How Do I Complete this Project?
 
