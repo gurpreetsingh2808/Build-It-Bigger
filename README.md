@@ -25,6 +25,9 @@ You will learn the role of Gradle in building Android Apps and how to use Gradle
 * Use the Gradle App Engine plugin to deploy a backend
 * Configure an integration test suite that runs against the local App Engine development server
 
+## Screenshots
+![0](https://cloud.githubusercontent.com/assets/9627223/24589854/801b9dda-17ff-11e7-8721-3efc4f51df94.png)
+
 ##How Do I Complete this Project?
 
 ### Step 0: Starting Point
