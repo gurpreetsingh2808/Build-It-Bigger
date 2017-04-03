@@ -27,6 +27,10 @@ You will learn the role of Gradle in building Android Apps and how to use Gradle
 
 ## Screenshots
 ![0](https://cloud.githubusercontent.com/assets/9627223/24589937/e0e6763e-1800-11e7-970d-84add1d1325a.png)
+![1](https://cloud.githubusercontent.com/assets/9627223/24597842/e0b66ba0-1865-11e7-8865-a6c4904a3582.png)
+![2](https://cloud.githubusercontent.com/assets/9627223/24597843/e94a5222-1865-11e7-8b27-6244e287d200.png)  
+![3](https://cloud.githubusercontent.com/assets/9627223/24597844/efa62542-1865-11e7-8123-3105cd4590e5.png)
+![4](https://cloud.githubusercontent.com/assets/9627223/24597849/f544cac6-1865-11e7-97ad-4e8b154f786e.png)
 
 ##How Do I Complete this Project?
 
